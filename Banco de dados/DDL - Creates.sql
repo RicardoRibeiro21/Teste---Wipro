@@ -18,7 +18,7 @@ CREATE TABLE tb_Filme (
 
 CREATE TABLE tb_Locacao (
 	idLocacao INT IDENTITY PRIMARY KEY,
-	idFilme INT FOREIGN KEY REFERENCES tb_Filme (idFilme),
-	idCliente INT FOREIGN KEY REFERENCES tb_Cliente (idCliente),
+	idFilme INT FOREIGN KEY REFERENCES tb_Filme (idFilme) NOT NULL,
+	idCliente INT FOREIGN KEY REFERENCES tb_Cliente (idCliente) NOT NULL,
 	dtEntrega DATE NOT NULL
 );
