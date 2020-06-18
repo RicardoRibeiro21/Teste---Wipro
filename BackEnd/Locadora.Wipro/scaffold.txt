@@ -1,0 +1,1 @@
+Scaffold-DbContext "Data Source=ROGER\SQLEXPRESS01;Initial Catalog=db_locadora;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Domains -ContextDir Contexts -Context LocadoraContext
