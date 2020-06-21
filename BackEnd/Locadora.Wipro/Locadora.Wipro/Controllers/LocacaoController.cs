@@ -45,22 +45,22 @@ namespace Locadora.Wipro.Controllers
         public IActionResult Post(Locacao locacao)
         {
             try
-            {
-                LocacaoRepository.Post(locacao);                
-                return Ok("Locação realizada com sucesso!");
+            {             
+                string mRetorno = LocacaoRepository.Post(locacao);
+                return Ok(mRetorno);
             }
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
 
-        //[HttpPut("{idLocacao}")]
-        //public IActionResult Put(int idLocacao)
-        //{
-        //    try
-        //    {
-        //        LocacaoRepository.Post(idLocacao);
-        //        return Ok("Filme Alterado com sucesso!");
-        //    }
-        //    catch (Exception ex) { return BadRequest(ex.Message); }
-        //}
+        [HttpPut("{idLocacao}")]
+        public IActionResult Put(int idLocacao)
+        {
+            try
+            {
+                string mRetorno = LocacaoRepository.PutRealizarEntrega(idLocacao);
+                return Ok(mRetorno);
+            }
+            catch (Exception ex) { return BadRequest(ex.Message); }
+        }
     }
 }

@@ -36,18 +36,18 @@ namespace Locadora.Wipro.Repositories
                             {
                                 Locacao locacao = new Locacao()
                                 {
-                                    IdLocacao = Convert.ToInt32(sqr["tl.idLocacao"]),
-                                    IdClienteNavigation =
+                                    IdLocacao = Convert.ToInt32(sqr["idLocacao"]),
+                                    IdClienteNavigation = new Cliente()
                                     {
-                                        IdCliente = Convert.ToInt32(sqr["tc.idCliente"]),
-                                        NomeCliente = sqr["tc.nomeCliente"].ToString()
+                                        IdCliente = Convert.ToInt32(sqr["idCliente"]),
+                                        NomeCliente = sqr["nomeCliente"].ToString()
                                     },
-                                    IdFilmeNavigation =
+                                    IdFilmeNavigation = new Filme()
                                     {
-                                        IdFilme = Convert.ToInt32(sqr["tf.idFilme"]),
-                                        NomeFilme = sqr["tf.nomeFilme"].ToString()
+                                        IdFilme = Convert.ToInt32(sqr["idFilme"]),
+                                        NomeFilme = sqr["nomeFilme"].ToString()
                                     },
-                                    DtEntrega = Convert.ToDateTime(sqr["tl.dtEntrega"])
+                                    DtEntrega = Convert.ToDateTime(sqr["dtEntrega"])
                                 };
                                 return locacao;
                             }
@@ -106,8 +106,9 @@ namespace Locadora.Wipro.Repositories
             catch (Exception ex) { throw ex; }
         }
 
-        public void Post(Locacao locacao)
+        public string Post(Locacao locacao)
         {
+            string mRetorno = "";
             try
             {
                 ClienteRepository clienteRepository = new ClienteRepository();
@@ -135,11 +136,47 @@ namespace Locadora.Wipro.Repositories
                         filme.Disponibilidade = false;
 
                         filmeRepository.Put(filme);
+
+                        mRetorno = "Locação Realizada com sucesso!";
                     }
+                    else mRetorno = "Filme não encontrado ou já alugado.";
                 }
             }
             catch (Exception ex) { throw ex; }
+            return mRetorno;
         }
 
+        public string PutRealizarEntrega(int idLocacao)
+        {
+            string mRetorno = "Filme entregue com sucesso!";
+            try
+            {
+                string query = @"UPDATE tb_Locacao 
+                                    SET dtEntrega = @dtEntrega
+                                  WHERE idLocacao = @idLocacao;";
+
+                Locacao locacao = new Locacao();
+                locacao = GetLocacaoById(idLocacao);
+
+                if (locacao != null)
+                {
+                    if (locacao.DtEntrega < DateTime.Now) mRetorno = "Filme com atraso na entrega!";                    
+                    
+                    using (SqlConnection con = new SqlConnection(conexao.StringConexao))
+                    {
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand(query, con);
+                        cmd.Parameters.AddWithValue("@idLocacao", idLocacao);
+                        cmd.Parameters.AddWithValue("@dtEntrega", DateTime.Now);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    FilmeRepository filmeRepository = new FilmeRepository();
+                    filmeRepository.PutDisponibilidade(locacao.IdFilmeNavigation.IdFilme, true);
+                }
+            }
+            catch (Exception ex) { throw ex; }
+            return mRetorno;
+        }
     }
 }

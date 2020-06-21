@@ -10,12 +10,10 @@ namespace Locadora.Wipro.Domains
     {
         public int IdLocacao { get; set; }
 
-        [Required(ErrorMessage = "Informe o id do filme")]
-        [Newtonsoft.Json.JsonIgnore]
+        [Required(ErrorMessage = "Informe o id do filme")]        
         public int IdFilme { get; set; }
 
-        [Required(ErrorMessage = "Informe o id do cliente")]
-        [Newtonsoft.Json.JsonIgnore]
+        [Required(ErrorMessage = "Informe o id do cliente")]        
         public int IdCliente { get; set; }
         [Required(ErrorMessage = "Informe a data de entrega")]
         [DataType(DataType.Date, ErrorMessage = "Informe uma data válida")]

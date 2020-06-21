@@ -110,7 +110,9 @@ namespace Locadora.Wipro.Repositories
             try
             {
                 string query = @"UPDATE tb_Filme 
-                                    SET disponibilidade = @disponibilidade
+                                    SET disponibilidade = @disponibilidade,
+                                        nomeFilme = @nomeFilme,
+                                        dtLancamento = @dtLancamento
                                   WHERE idFilme = @idFilme;";
 
                 GetFilmeById(filme.IdFilme);
@@ -122,7 +124,32 @@ namespace Locadora.Wipro.Repositories
                         con.Open();
                         SqlCommand cmd = new SqlCommand(query, con);
                         cmd.Parameters.AddWithValue("@idFilme", filme.IdFilme);
+                        cmd.Parameters.AddWithValue("@nomeFilme", filme.NomeFilme);
+                        cmd.Parameters.AddWithValue("@dtLancamento", filme.DtLancamento);
                         cmd.Parameters.AddWithValue("@disponibilidade", filme.Disponibilidade);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public void PutDisponibilidade(int idFilme, bool disponibilidade)
+        {
+            try
+            {
+                string query = @"UPDATE tb_Filme 
+                                    SET disponibilidade = @disponibilidade                                        
+                                  WHERE idFilme = @idFilme;";                
+
+                if (GetFilmeById(idFilme) != null)
+                {
+                    using (SqlConnection con = new SqlConnection(conexao.StringConexao))
+                    {
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand(query, con);
+                        cmd.Parameters.AddWithValue("@idFilme", idFilme);
+                        cmd.Parameters.AddWithValue("@disponibilidade", disponibilidade);
                         cmd.ExecuteNonQuery();
                     }
                 }

@@ -12,7 +12,13 @@ namespace Locadora.Wipro.Interfaces
         /// Registra uma locação
         /// </summary>
         /// <param name="locacao">Objeto do tipo Locacao</param>
-        void Post(Locacao locacao);
+        string Post(Locacao locacao);
+
+        /// <summary>
+        /// Registra uma locação
+        /// </summary>
+        /// <param name="idLocacao">Objeto do tipo Locacao</param>
+        string PutRealizarEntrega(int idLocacao);
 
         /// <summary>
         /// Busca todas as locacoes na base de dados
