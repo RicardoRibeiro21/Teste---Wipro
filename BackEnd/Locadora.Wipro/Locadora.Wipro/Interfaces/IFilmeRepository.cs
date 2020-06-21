@@ -30,8 +30,8 @@ namespace Locadora.Wipro.Interfaces
         /// <summary>
         /// Atualiza o filme, assim como sua disponibilidade
         /// </summary>
-        /// <param name="idFilme">id do filme</param>
-        void Put(int idFilme);
+        /// <param name="filme">Objeto filme</param>
+        void Put(Filme filme);
 
     }
 }

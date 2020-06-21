@@ -35,7 +35,7 @@ namespace Locadora.Wipro.Repositories
                             {
                                 Filme filme = new Filme()
                                 {
-                                    IdFilme = Convert.ToInt32(sqr["idFilme "]),
+                                    IdFilme = Convert.ToInt32(sqr["idFilme"]),
                                     NomeFilme = sqr["nomeFilme"].ToString(),
                                     Disponibilidade = Convert.ToBoolean(sqr["disponibilidade"]),
                                     DtLancamento = Convert.ToDateTime(sqr["dtLancamento"])
@@ -71,7 +71,7 @@ namespace Locadora.Wipro.Repositories
                             {
                                 Filme filme = new Filme()
                                 {
-                                    IdFilme = Convert.ToInt32(sqr["idFilme "]),
+                                    IdFilme = Convert.ToInt32(sqr["idFilme"]),
                                     NomeFilme = sqr["nomeFilme"].ToString(),
                                     Disponibilidade = Convert.ToBoolean(sqr["disponibilidade"]),
                                     DtLancamento = Convert.ToDateTime(sqr["dtLancamento"])
@@ -105,7 +105,7 @@ namespace Locadora.Wipro.Repositories
             catch (Exception ex) { throw ex; }
         }
 
-        public void Put(int idFilme)
+        public void Put(Filme filme)
         {
             try
             {
@@ -113,7 +113,7 @@ namespace Locadora.Wipro.Repositories
                                     SET disponibilidade = @disponibilidade
                                   WHERE idFilme = @idFilme;";
 
-                Filme filme = GetFilmeById(idFilme);
+                GetFilmeById(filme.IdFilme);
 
                 if (filme != null)
                 {

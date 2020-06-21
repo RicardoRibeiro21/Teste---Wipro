@@ -63,7 +63,7 @@ namespace Locadora.Wipro.Repositories
         {
             try
             {
-                string query = @"SELECT tl.idLocacao, tf.idFilme, tf.nomeFilme, tc.idCliente, tc.nomeCliente, tl.dtEntrega " +
+                string query = @"SELECT tl.idLocacao, tf.idFilme, tf.nomeFilme, tf.dtLancamento, tc.idCliente, tc.nomeCliente, tl.dtEntrega " +
                     "              FROM tb_Locacao tl INNER JOIN tb_Cliente tc ON tl.idCliente = tc.idCliente " +
                     "                                 INNER JOIN tb_Filme tf ON tl.idFilme = tf.idFilme ";
 
@@ -82,18 +82,19 @@ namespace Locadora.Wipro.Repositories
                             {
                                 Locacao locacao = new Locacao()
                                 {
-                                    IdLocacao = Convert.ToInt32(sqr["tl.idLocacao"]),
-                                    IdClienteNavigation =
+                                    IdLocacao = Convert.ToInt32(sqr["idLocacao"]),
+                                    IdClienteNavigation = new Cliente()
                                     {
-                                        IdCliente = Convert.ToInt32(sqr["tc.idCliente"]),
-                                        NomeCliente = sqr["tc.nomeCliente"].ToString()
+                                        IdCliente = Convert.ToInt32(sqr["idCliente"]),
+                                        NomeCliente = sqr["nomeCliente"].ToString()
                                     },
-                                    IdFilmeNavigation =
+                                    IdFilmeNavigation = new Filme()
                                     {
-                                        IdFilme = Convert.ToInt32(sqr["tf.idFilme"]),
-                                        NomeFilme = sqr["tf.nomeFilme"].ToString()
+                                        IdFilme = Convert.ToInt32(sqr["idFilme"]),
+                                        NomeFilme = sqr["nomeFilme"].ToString(),
+                                        DtLancamento = Convert.ToDateTime(sqr["dtLancamento"])
                                     },
-                                    DtEntrega = Convert.ToDateTime(sqr["tl.dtEntrega"])
+                                    DtEntrega = Convert.ToDateTime(sqr["dtEntrega"])
                                 };
                                 listLocacoes.Add(locacao);
                             }
@@ -118,6 +119,7 @@ namespace Locadora.Wipro.Repositories
 
                     if (filme != null && filme.Disponibilidade)
                     {
+                        // Adicionando os valores da locação
                         string query = @"INSERT INTO tb_Locacao (idCliente, idFilme, dtEntrega) VALUES (@idCliente, @idFilme, @dtEntrega);";
 
                         using (SqlConnection con = new SqlConnection(conexao.StringConexao))
@@ -129,6 +131,10 @@ namespace Locadora.Wipro.Repositories
                             cmd.Parameters.AddWithValue("@dtEntrega", locacao.DtEntrega);
                             cmd.ExecuteNonQuery();
                         }
+
+                        filme.Disponibilidade = false;
+
+                        filmeRepository.Put(filme);
                     }
                 }
             }
