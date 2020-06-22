@@ -1,0 +1,189 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Locadora - Wipro",
+		"_postman_id": "0ed83b82-584b-83c6-021d-8cd191391c28",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Filmes",
+			"description": "",
+			"item": [
+				{
+					"name": "GetFilmes",
+					"request": {
+						"url": "https://localhost:5001/api/Filmes",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetFilmesById",
+					"request": {
+						"url": "https://localhost:5001/api/Filmes/2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PostFilme",
+					"request": {
+						"url": "https://localhost:5001/api/Filmes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idFilme\": 5,\n    \"nomeFilme\": \"A procura da Felicidade\",\n    \"dtLancamento\": \"2006-04-11T00:00:00\",\n    \"disponibilidade\": true\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PutFilme",
+					"request": {
+						"url": "https://localhost:5001/api/Filmes/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"idFilme\": 1,\n        \"nomeFilme\": \"Efeito Borboleta\",\n        \"dtLancamento\": \"2004-03-12T00:00:00\",\n        \"disponibilidade\": true\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clientes",
+			"description": "",
+			"item": [
+				{
+					"name": "GetClientes",
+					"request": {
+						"url": "https://localhost:5001/api/Cliente",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PostCliente",
+					"request": {
+						"url": "https://localhost:5001/api/Cliente",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"nomeCliente\": \"Matheus Silva\",\n        \"cpf\": \"123.564.465-11\",\n        \"dtNascimento\": \"2001-12-11T00:00:00\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetClienteById",
+					"request": {
+						"url": "https://localhost:5001/api/Cliente/2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Locacoes",
+			"description": "",
+			"item": [
+				{
+					"name": "GetLocacoes",
+					"request": {
+						"url": "https://localhost:5001/api/Locacao",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PostLocacao",
+					"request": {
+						"url": "https://localhost:5001/api/Locacao",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"idFilme\": 4,\n        \"idCliente\": 1,\n        \"dtEntrega\": \"2020-06-21T00:00:00\"\n }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PutLocacaoEntregar",
+					"request": {
+						"url": "https://localhost:5001/api/Locacao/3",
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GetByIdLocacao",
+					"request": {
+						"url": "https://localhost:5001/api/Locacao/2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

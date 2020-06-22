@@ -139,7 +139,7 @@ namespace Locadora.Wipro.Repositories
 
                         mRetorno = "Locação Realizada com sucesso!";
                     }
-                    else mRetorno = "Filme não encontrado ou já alugado.";
+                    else mRetorno = "O Filme já está alugado.";
                 }
             }
             catch (Exception ex) { throw ex; }
