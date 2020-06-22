@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Wipro", "Locadora.Wipro\Locadora.Wipro.csproj", "{996EEE9A-EEE2-4F82-B6A7-858BCB22A990}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locadora.Wipro", "Locadora.Wipro\Locadora.Wipro.csproj", "{996EEE9A-EEE2-4F82-B6A7-858BCB22A990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Wipro.Tests", "Locadora.Wipro.Tests\Locadora.Wipro.Tests.csproj", "{38F1BCAE-1F7F-413A-9168-885FF53092B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{996EEE9A-EEE2-4F82-B6A7-858BCB22A990}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{996EEE9A-EEE2-4F82-B6A7-858BCB22A990}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{996EEE9A-EEE2-4F82-B6A7-858BCB22A990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38F1BCAE-1F7F-413A-9168-885FF53092B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38F1BCAE-1F7F-413A-9168-885FF53092B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38F1BCAE-1F7F-413A-9168-885FF53092B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38F1BCAE-1F7F-413A-9168-885FF53092B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

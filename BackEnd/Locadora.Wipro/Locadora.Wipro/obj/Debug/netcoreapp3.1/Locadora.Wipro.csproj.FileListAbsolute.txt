@@ -2,7 +2,6 @@ D:\Ricardo\Entrevista\Wipro\Sistema Locadora\BackEnd\Locadora.Wipro\Locadora.Wip
 D:\Ricardo\Entrevista\Wipro\Sistema Locadora\BackEnd\Locadora.Wipro\Locadora.Wipro\bin\Debug\netcoreapp3.1\appsettings.json
 D:\Ricardo\Entrevista\Wipro\Sistema Locadora\BackEnd\Locadora.Wipro\Locadora.Wipro\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\Ricardo\Entrevista\Wipro\Sistema Locadora\BackEnd\Locadora.Wipro\Locadora.Wipro\bin\Debug\netcoreapp3.1\Locadora.Wipro.exe
-D:\Ricardo\Entrevista\Wipro\Sistema Locadora\BackEnd\Locadora.Wipro\Locadora.Wipro\obj\Debug\netcoreapp3.1\Locadora.Wipro.csprojAssemblyReference.cache
 D:\Ricardo\Entrevista\Wipro\Sistema Locadora\BackEnd\Locadora.Wipro\Locadora.Wipro\obj\Debug\netcoreapp3.1\staticwebassets\Locadora.Wipro.StaticWebAssets.Manifest.cache
 D:\Ricardo\Entrevista\Wipro\Sistema Locadora\BackEnd\Locadora.Wipro\Locadora.Wipro\obj\Debug\netcoreapp3.1\staticwebassets\Locadora.Wipro.StaticWebAssets.xml
 D:\Ricardo\Entrevista\Wipro\Sistema Locadora\BackEnd\Locadora.Wipro\Locadora.Wipro\obj\Debug\netcoreapp3.1\Locadora.Wipro.AssemblyInfoInputs.cache
@@ -131,3 +130,4 @@ D:\Ricardo\Entrevista\Wipro\Sistema Locadora\BackEnd\Locadora.Wipro\Locadora.Wip
 D:\Ricardo\Entrevista\Wipro\Sistema Locadora\BackEnd\Locadora.Wipro\Locadora.Wipro\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Ricardo\Entrevista\Wipro\Sistema Locadora\BackEnd\Locadora.Wipro\Locadora.Wipro\obj\Debug\netcoreapp3.1\Locadora.Wipro.MvcApplicationPartsAssemblyInfo.cs
 D:\Ricardo\Entrevista\Wipro\Sistema Locadora\BackEnd\Locadora.Wipro\Locadora.Wipro\obj\Debug\netcoreapp3.1\Locadora.Wipro.MvcApplicationPartsAssemblyInfo.cache
+D:\Ricardo\Entrevista\Wipro\Sistema Locadora\BackEnd\Locadora.Wipro\Locadora.Wipro\obj\Debug\netcoreapp3.1\Locadora.Wipro.csprojAssemblyReference.cache

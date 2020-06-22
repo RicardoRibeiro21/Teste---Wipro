@@ -42,11 +42,13 @@ namespace Locadora.Wipro.Repositories
                                         IdCliente = Convert.ToInt32(sqr["idCliente"]),
                                         NomeCliente = sqr["nomeCliente"].ToString()
                                     },
+                                    IdCliente = Convert.ToInt32(sqr["idCliente"]),
                                     IdFilmeNavigation = new Filme()
                                     {
                                         IdFilme = Convert.ToInt32(sqr["idFilme"]),
                                         NomeFilme = sqr["nomeFilme"].ToString()
                                     },
+                                    IdFilme = Convert.ToInt32(sqr["idFilme"]),
                                     DtEntrega = Convert.ToDateTime(sqr["dtEntrega"])
                                 };
                                 return locacao;
@@ -71,10 +73,12 @@ namespace Locadora.Wipro.Repositories
 
                 using (SqlConnection con = new SqlConnection(conexao.StringConexao))
                 {
+                    // Abrindo a conexão com o banco
                     con.Open();
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
+                        // Executando a leitura
                         SqlDataReader sqr = cmd.ExecuteReader();
                         if (sqr.HasRows)
                         {
@@ -96,6 +100,7 @@ namespace Locadora.Wipro.Repositories
                                     },
                                     DtEntrega = Convert.ToDateTime(sqr["dtEntrega"])
                                 };
+                                // Adicionando a locação na lista
                                 listLocacoes.Add(locacao);
                             }
                         }
@@ -108,16 +113,18 @@ namespace Locadora.Wipro.Repositories
 
         public string Post(Locacao locacao)
         {
-            string mRetorno = "";
+            string mRetorno = String.Empty;
             try
             {
                 ClienteRepository clienteRepository = new ClienteRepository();
                 FilmeRepository filmeRepository = new FilmeRepository();
 
+                // Verificando se o cliente existe
                 if (clienteRepository.GetClienteById(locacao.IdCliente) != null)
                 {
                     Filme filme = filmeRepository.GetFilmeById(locacao.IdFilme);
 
+                    // Verificando se o filme existe e se está disponível para alugar
                     if (filme != null && filme.Disponibilidade)
                     {
                         // Adicionando os valores da locação
@@ -133,8 +140,8 @@ namespace Locadora.Wipro.Repositories
                             cmd.ExecuteNonQuery();
                         }
 
+                        // Atualizando a disponibilidade do filme
                         filme.Disponibilidade = false;
-
                         filmeRepository.Put(filme);
 
                         mRetorno = "Locação Realizada com sucesso!";
@@ -155,13 +162,15 @@ namespace Locadora.Wipro.Repositories
                                     SET dtEntrega = @dtEntrega
                                   WHERE idLocacao = @idLocacao;";
 
+                // Buscando a locacao através do Id
                 Locacao locacao = new Locacao();
                 locacao = GetLocacaoById(idLocacao);
 
                 if (locacao != null)
                 {
-                    if (locacao.DtEntrega < DateTime.Now) mRetorno = "Filme com atraso na entrega!";                    
-                    
+                    // Verificando a data de entrega
+                    if (locacao.DtEntrega < DateTime.Now) mRetorno = "Filme com atraso na entrega!";
+
                     using (SqlConnection con = new SqlConnection(conexao.StringConexao))
                     {
                         con.Open();
@@ -171,6 +180,7 @@ namespace Locadora.Wipro.Repositories
                         cmd.ExecuteNonQuery();
                     }
 
+                    // Atualizando a disponibilidade do filme após a entrega
                     FilmeRepository filmeRepository = new FilmeRepository();
                     filmeRepository.PutDisponibilidade(locacao.IdFilmeNavigation.IdFilme, true);
                 }
